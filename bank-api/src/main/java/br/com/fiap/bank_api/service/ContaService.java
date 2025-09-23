@@ -21,6 +21,8 @@ public class ContaService {
     @Transactional
     public ContaResponseDTO criar(ContaCreateDTO dto) {
         Conta conta = Conta.builder()
+                .numero(dto.numero())
+                .agencia(dto.agencia())
                 .nomeTitular(dto.nomeTitular())
                 .cpf(dto.cpf())
                 .dataAbertura(dto.dataAbertura())
@@ -72,10 +74,11 @@ public class ContaService {
         return ContaResponseDTO.from(c);
     }
 
-    // ===== Criação em lote =====
     @Transactional
     public List<ContaResponseDTO> criarEmLote(List<ContaCreateDTO> dtos) {
         List<Conta> entidades = dtos.stream().map(dto -> Conta.builder()
+                .numero(dto.numero())
+                .agencia(dto.agencia())
                 .nomeTitular(dto.nomeTitular())
                 .cpf(dto.cpf())
                 .dataAbertura(dto.dataAbertura())
@@ -89,7 +92,6 @@ public class ContaService {
         return salvas.stream().map(ContaResponseDTO::from).toList();
     }
 
-    // ===== PIX =====
     @Transactional
     public ContaResponseDTO pix(PixDTO dto) {
         if (dto.idOrigem().equals(dto.idDestino())) {
@@ -106,11 +108,9 @@ public class ContaService {
         origem.setSaldo(origem.getSaldo().subtract(dto.valor()));
         destino.setSaldo(destino.getSaldo().add(dto.valor()));
 
-        // Retorna a conta de origem após a transferência
         return ContaResponseDTO.from(origem);
     }
 
-    // ===== Utilitários =====
     private Conta buscarAtiva(Long id) {
         Conta c = buscarAtivaOuInativa(id);
         if (!c.isAtiva()) throw new NegocioException("Conta inativa");

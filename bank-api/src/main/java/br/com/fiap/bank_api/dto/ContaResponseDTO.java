@@ -8,6 +8,8 @@ import java.time.LocalDate;
 
 public record ContaResponseDTO(
         Long id,
+        String numero,
+        String agencia,
         String nomeTitular,
         String cpf,
         LocalDate dataAbertura,
@@ -17,9 +19,8 @@ public record ContaResponseDTO(
 ) {
     public static ContaResponseDTO from(Conta c) {
         return new ContaResponseDTO(
-                c.getId(), c.getNomeTitular(), c.getCpf(),
-                c.getDataAbertura(), c.getSaldo(),
-                c.getTipo(), c.isAtiva()
+                c.getId(), c.getNumero(), c.getAgencia(), c.getNomeTitular(), c.getCpf(),
+                c.getDataAbertura(), c.getSaldo(), c.getTipo(), c.isAtiva()
         );
     }
 }

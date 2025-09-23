@@ -4,9 +4,9 @@ import jakarta.validation.constraints.*;
 import br.com.fiap.bank_api.model.TipoConta;
 
 public record ContaUpdateDTO(
-        @NotBlank(message = "Nome do titular é obrigatório")
+        @NotBlank(message = "{account.holder.notblank}")
         String nomeTitular,
 
-        @NotNull(message = "Tipo da conta é obrigatório")
+        @NotNull(message = "{account.type.invalid}")
         TipoConta tipo
 ) {}

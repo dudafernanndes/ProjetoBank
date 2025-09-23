@@ -8,18 +8,25 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record ContaCreateDTO(
-        @NotBlank(message = "Nome do titular é obrigatório")
+        @NotBlank(message = "{account.number.notblank}")
+        @Pattern(regexp = "^[0-9]{6,10}$", message = "{account.number.pattern}")
+        String numero,
+
+        @NotBlank(message = "{account.agency.notblank}")
+        String agencia,
+
+        @NotBlank(message = "{account.holder.notblank}")
         String nomeTitular,
 
-        @NotBlank @CPF(message = "CPF inválido")
+        @NotBlank(message = "{account.cpf.notblank}") @CPF(message = "{account.cpf.invalid}")
         String cpf,
 
-        @PastOrPresent(message = "Data de abertura não pode ser no futuro")
+        @PastOrPresent(message = "{account.opening.pastorpresent}")
         LocalDate dataAbertura,
 
-        @DecimalMin(value = "0.00", message = "Saldo inicial não pode ser negativo")
+        @DecimalMin(value = "0.00", message = "{account.balance.positive}")
         BigDecimal saldoInicial,
 
-        @NotNull(message = "Tipo da conta é obrigatório")
+        @NotNull(message = "{account.type.invalid}")
         TipoConta tipo
 ) {}
