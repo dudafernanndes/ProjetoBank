@@ -1,0 +1,229 @@
+type: collection.insomnia.rest/5.0
+name: Bank API
+meta:
+  id: wrk_8150e277fe834ecaa76da632f8862de4
+  created: 1758631064547
+  modified: 1759413286373
+collection:
+  - url: http://localhost:8080/
+    name: Home
+    meta:
+      id: req_f1ea8c79e7dd4c26ae4b49978b2b2c7a
+      created: 1758631083911
+      modified: 1759413286372
+      isPrivate: false
+      sortKey: -1758631083911
+    method: GET
+    body:
+      mimeType: application/json
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/contas/lote
+    name: Criar conta
+    meta:
+      id: req_89a79797f06b4d2ba8a599cfac886cf4
+      created: 1758631928763
+      modified: 1759413286369
+      isPrivate: false
+      sortKey: -1758631928763
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        [
+          {
+            "numero": "654321",
+            "agencia": "9876-0",
+            "nomeTitular": "Pedro Alves",
+            "cpf": "39053344705",
+            "dataAbertura": "2025-09-20",
+            "saldoInicial": 200.00,
+            "tipo": "POUPANCA"
+          },
+          {
+            "numero": "777888",
+            "agencia": "1111-1",
+            "nomeTitular": "Julia S.",
+            "cpf": "52998224725",
+            "dataAbertura": "2025-09-10",
+            "saldoInicial": 900.00,
+            "tipo": "SALARIO"
+          }
+        ]
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/contas
+    name: Listar contas
+    meta:
+      id: req_bcefcecc60fe44bab370f3a18a7e856c
+      created: 1758632006678
+      modified: 1759413286370
+      isPrivate: false
+      sortKey: -1758632006678
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/contas/1
+    name: Buscar ID
+    meta:
+      id: req_f845ae2f977d4baaaab6f79057f2f4ce
+      created: 1758632164162
+      modified: 1759413286373
+      isPrivate: false
+      sortKey: -1758632164162
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/contas/2
+    name: Atualizar conta
+    meta:
+      id: req_f3464379f47642d3b269231e209e48a6
+      created: 1758632625800
+      modified: 1759413286372
+      isPrivate: false
+      sortKey: -1758632625800
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "nomeTitular": "Julia Santos",
+          "tipo": "POUPANCA"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/contas/deposito
+    name: Depósito
+    meta:
+      id: req_8a7fc6b76f9d487ea60536abd6d2ef74
+      created: 1758632707818
+      modified: 1759413286370
+      isPrivate: false
+      sortKey: -1758632707818
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        { "idConta": 2, "valor": 50.00 }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/contas/pix
+    name: Pix
+    meta:
+      id: req_e7569b6e8f704355b9deb8a626683c6d
+      created: 1758632766029
+      modified: 1759413286371
+      isPrivate: false
+      sortKey: -1758632766029
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        { "idOrigem": 1, "idDestino": 2, "valor": 50.00 }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Encerrar
+    meta:
+      id: req_c77e652e7d184d28a579a2d3402e41d0
+      created: 1758632840218
+      modified: 1759413286371
+      isPrivate: false
+      sortKey: -1758632840218
+    method: POST
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_d2b6d69ef5c5456e92ea395d9cbb881f9dfc2d22
+    created: 1759413286472
+    modified: 1759413286472
+environments:
+  name: Base Environment
+  meta:
+    id: env_d2b6d69ef5c5456e92ea395d9cbb881f9dfc2d22
+    created: 1758631064549
+    modified: 1759413286368
+    isPrivate: false
